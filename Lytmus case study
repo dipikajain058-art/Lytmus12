@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Nike Run Club - Retention Case Study v2 | Product Intern</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07080A;--surface:#0E1014;--card:#13151A;--card2:#181B21;
+  --border:#1E2128;--accent:#FF4500;--gold:#F5C518;--green:#22C55E;
+  --blue:#3B82F6;--purple:#A855F7;--red:#EF4444;--pink:#FF6B9D;
+  --text:#EDF0F5;--sub:#8B909E;--dim:#2A2D35;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;font-size:14px}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--dim);border-radius:2px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp .35s ease both}
+/* HEADER */
+.hdr{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border)}
+.hinner{max-width:840px;margin:0 auto;padding:0 20px}
+.htop{padding:13px 0 11px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.bi{background:var(--accent);color:#fff;font-family:'Syne',sans-serif;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px}
+.bv{font-size:12px;color:var(--sub)}
+.bc{margin-left:auto;font-size:10px;color:var(--blue);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.22);padding:3px 9px;border-radius:10px;font-weight:700;letter-spacing:.05em}
+.tabs{display:flex;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tb{background:none;border:none;border-bottom:2px solid transparent;color:var(--sub);font-family:'Inter',sans-serif;font-size:11px;font-weight:500;padding:10px 13px;cursor:pointer;white-space:nowrap;letter-spacing:.04em;text-transform:uppercase;transition:all .15s}
+.tb.on{border-bottom-color:var(--accent);color:var(--text);font-weight:700}
+/* LAYOUT */
+.wrap{max-width:840px;margin:0 auto;padding:30px 20px 80px}
+.pnl{display:none}.pnl.on{display:block}
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:18px 20px}
+.c2{background:var(--card2)}
+.cal{border-left:3px solid currentColor}
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px}
+.gstat{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:9px}
+/* SECTION HEADER */
+.sh{display:flex;align-items:center;gap:9px;margin-bottom:18px}
+.sh-bar{width:3px;height:20px;border-radius:2px;flex-shrink:0}
+.sh-txt{font-family:'Syne',sans-serif;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+/* STAT BOX */
+.sb{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:14px 12px;text-align:center}
+.sv{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;line-height:1}
+.sl{font-size:10px;font-weight:700;color:var(--text);margin-top:4px;letter-spacing:.03em}
+.ss{font-size:10px;color:var(--sub);margin-top:2px}
+/* PILL */
+.pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-right:4px;margin-bottom:3px;border:1px solid}
+/* HERO */
+.hero{background:linear-gradient(135deg,#160900 0%,#0A0B0E 60%);border:1px solid rgba(255,69,0,.15);border-radius:14px;padding:28px 26px;margin-bottom:18px;position:relative;overflow:hidden}
+.horb{position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:var(--accent);border-radius:50%;opacity:.05;pointer-events:none}
+.hero h1{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--text);line-height:1.1;margin-bottom:12px}
+.hero p{font-size:13px;color:var(--sub);max-width:480px;line-height:1.75}
+/* FUNNEL */
+.fbar-wrap{margin-bottom:16px}
+.fbar-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.fbar-track{background:var(--dim);border-radius:4px;height:6px}
+.fbar-fill{height:100%;border-radius:4px}
+.fnote{font-size:10px;color:var(--sub);font-style:italic;margin-top:3px}
+/* ACCORDION */
+.acc{cursor:pointer;transition:border-color .2s;border-left:3px solid transparent}
+.acc-hd{display:flex;justify-content:space-between;align-items:center}
+.acc-bd{display:none;margin-top:13px;padding-top:13px;border-top:1px solid var(--border)}
+.acc.open .acc-bd{display:block}
+.acc-tog{color:var(--sub);font-size:16px;flex-shrink:0;margin-left:8px;line-height:1;font-family:'Inter',sans-serif}
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{padding:7px 9px;text-align:left;color:var(--sub);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;border-bottom:1px solid var(--border)}
+.tbl td{padding:9px 9px;border-bottom:1px solid var(--border);color:var(--sub);font-size:12px}
+.tbl td:first-child{color:var(--text)}.tbl td:last-child{font-weight:700}
+/* DIVIDER */
+.dvd{height:1px;background:var(--border);margin:24px 0}
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:14px 20px;text-align:center;font-size:11px;color:var(--dim)}
+/* NOTICE */
+.notice{border-radius:11px;padding:13px 16px;display:flex;gap:11px;align-items:flex-start}
+/* RESPONSIVE */
+@media(max-width:580px){.g3{grid-template-columns:1fr 1fr}.hero h1{font-size:24px}.gstat{grid-template-columns:1fr 1fr}}
+@media(max-width:360px){.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+<div class="hinner">
+  <div class="htop">
+    <div class="bi">Product Intern</div>
+    <div class="bv">Case Study &middot; v2 &middot; Reddit-Validated</div>
+    <div class="bc">7 ROOT CAUSES &middot; 7 FIXES</div>
+  </div>
+  <div class="tabs" id="tabBar">
+    <button class="tb on" data-tab="overview">Overview</button>
+    <button class="tb" data-tab="funnel">Funnel</button>
+    <button class="tb" data-tab="reasons">Root Causes</button>
+    <button class="tb" data-tab="competitive">Competitive Intel</button>
+    <button class="tb" data-tab="solutions">Solutions</button>
+    <button class="tb" data-tab="metrics">Metrics</button>
+    <button class="tb" data-tab="wireframes">Wireframes</button>
+  </div>
+</div>
+</div>
+
+<div class="wrap">
+
+<!-- ===== OVERVIEW ===== -->
+<div class="pnl on fu" id="pnl-overview">
+  <div class="hero">
+    <div class="horb"></div>
+    <div style="font-size:10px;color:var(--accent);font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px">Product Intern Case Study &middot; Fitness App &middot; 2025</div>
+    <h1>Nike Run Club<br>Retention Teardown</h1>
+    <p>NRC acquires millions of users monthly. Only 9% are still active at Day 30. The app delivers a great first experience &mdash; then goes completely silent. This case study diagnoses 7 root causes, proposes prioritised fixes, and validates everything against real user behaviour data.</p>
+    <div style="margin-top:16px;display:flex;gap:7px;flex-wrap:wrap">
+      <span class="pill" style="background:rgba(255,69,0,.13);color:var(--accent);border-color:rgba(255,69,0,.22)">Fitness / Running</span>
+      <span class="pill" style="background:rgba(255,69,0,.13);color:var(--accent);border-color:rgba(255,69,0,.22)">Freemium</span>
+      <span class="pill" style="background:rgba(255,69,0,.13);color:var(--accent);border-color:rgba(255,69,0,.22)">Urban India Focus</span>
+      <span class="pill" style="background:rgba(255,69,0,.13);color:var(--accent);border-color:rgba(255,69,0,.22)">18&ndash;38 Age Group</span>
+    </div>
+  </div>
+
+  <div class="card c2" style="margin-bottom:18px">
+    <div style="font-size:13px;color:var(--sub);line-height:1.75"><strong style="color:var(--text)">Why Nike Run Club?</strong> Mature app, documented retention struggles, strong brand pull in urban India, free tier, and a clear gap between product quality and long-term engagement. Validated with real user churn patterns, third-party sync app behaviour (SyncApp, RunSync), Tom&rsquo;s Guide review data, and Runna/Strava competitive data 2025. Root causes 6 and 7 were added after this validation &mdash; missing from v1.</div>
+  </div>
+
+  <div style="margin-bottom:20px">
+    <div class="sh"><div class="sh-bar" style="background:var(--accent)"></div><span class="sh-txt" style="color:var(--accent)">Baseline Metrics &mdash; Simulated 100K Cohort</span></div>
+    <div class="gstat">
+      <div class="sb"><div class="sv" style="color:var(--green)">72%</div><div class="sl">Onboarding Complete</div><div class="ss">D0 drop</div></div>
+      <div class="sb"><div class="sv" style="color:var(--gold)">18%</div><div class="sl">D7 Retention</div><div class="ss">Habit cliff</div></div>
+      <div class="sb"><div class="sv" style="color:var(--accent)">9%</div><div class="sl">D30 Retention</div><div class="ss">Baseline</div></div>
+      <div class="sb"><div class="sv" style="color:var(--green)">18%</div><div class="sl">Target D30</div><div class="ss">Post-fixes</div></div>
+      <div class="sb"><div class="sv" style="color:var(--blue)">1.4</div><div class="sl">Sessions/Week</div><div class="ss">Active users only</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--green);margin-bottom:14px">
+    <div style="font-size:10px;color:var(--green);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px">North Star Metric + OKRs</div>
+    <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--text);margin-bottom:7px">Weekly Active Runners</div>
+    <div style="font-size:13px;color:var(--sub);line-height:1.75">Not DAU. A user who opens the app but skips their run is not a win. Secondary OKRs: D30 retention 9%&rarr;18% &middot; Sessions/week 1.4&rarr;2.8 &middot; Program enrollment &gt;40% &middot; Pod formation &gt;25% W2 users.</div>
+  </div>
+
+  <div class="notice" style="background:#0D1520;border:1px solid rgba(59,130,246,.2)">
+    <span style="font-size:18px;flex-shrink:0">&#128269;</span>
+    <div style="font-size:13px;color:var(--sub);line-height:1.7"><strong style="color:var(--blue)">Validated against real user signals.</strong> This is v2. Updated after analysing user churn patterns, third-party sync app behaviour, competitive market data, and real user reviews. Two new root causes (Android gap, no paywall) were added &mdash; both missing from v1.</div>
+  </div>
+</div>
+
+<!-- ===== FUNNEL ===== -->
+<div class="pnl" id="pnl-funnel">
+  <div class="sh"><div class="sh-bar" style="background:var(--accent)"></div><span class="sh-txt" style="color:var(--accent)">User Funnel &mdash; 100K Install Cohort</span></div>
+  <div class="card" style="margin-bottom:18px" id="funnelBars"></div>
+  <div class="g3">
+    <div class="card" style="border-left:3px solid var(--accent)">
+      <div style="font-size:9px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">Biggest Drop</div>
+      <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--text)">D3 &rarr; D7</div>
+      <div style="font-size:11px;color:var(--sub);margin-top:4px">Habit window. No structure to return to.</div>
+    </div>
+    <div class="card" style="border-left:3px solid var(--gold)">
+      <div style="font-size:9px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">Critical Signal</div>
+      <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--text)">2 runs in W1</div>
+      <div style="font-size:11px;color:var(--sub);margin-top:4px">Users who do this retain at 3&times; the rate.</div>
+    </div>
+    <div class="card" style="border-left:3px solid var(--green)">
+      <div style="font-size:9px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">If Fixed</div>
+      <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--text)">+9,000</div>
+      <div style="font-size:11px;color:var(--sub);margin-top:4px">Additional retained users per 100K cohort.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ROOT CAUSES ===== -->
+<div class="pnl" id="pnl-reasons">
+  <div class="sh"><div class="sh-bar" style="background:var(--accent)"></div><span class="sh-txt" style="color:var(--accent)">7 Root Causes of Drop-off</span></div>
+  <div class="card c2" style="border:1px solid rgba(59,130,246,.2);margin-bottom:18px">
+    <div style="font-size:13px;color:var(--sub);line-height:1.7"><strong style="color:var(--blue)">v2 update:</strong> Root causes 6 and 7 were missing from the original draft. Added after validating against real user churn signals, third-party app behaviour, and competitive data. Click any cause to expand.</div>
+  </div>
+  <div id="reasonsList"></div>
+</div>
+
+<!-- ===== COMPETITIVE ===== -->
+<div class="pnl" id="pnl-competitive">
+  <div class="sh"><div class="sh-bar" style="background:var(--accent)"></div><span class="sh-txt" style="color:var(--accent)">Competitive Intelligence &mdash; What Real Users Did</span></div>
+  <div class="g3" id="compCards" style="margin-bottom:18px"></div>
+  <div id="compInsights"></div>
+</div>
+
+<!-- ===== SOLUTIONS ===== -->
+<div class="pnl" id="pnl-solutions">
+  <div class="sh"><div class="sh-bar" style="background:var(--accent)"></div><span class="sh-txt" style="color:var(--accent)">7 Recommended Fixes &mdash; Prioritised</span></div>
+  <div class="card c2" style="margin-bottom:18px">
+    <div class="g3">
+      <div style="text-align:center;padding:10px 6px"><div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--accent)">3</div><div style="font-size:11px;color:var(--sub);margin-top:3px">P0 &mdash; Build first</div></div>
+      <div style="text-align:center;padding:10px 6px"><div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--gold)">2</div><div style="font-size:11px;color:var(--sub);margin-top:3px">P1 &mdash; Build next</div></div>
+      <div style="text-align:center;padding:10px 6px"><div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--green)">2</div><div style="font-size:11px;color:var(--sub);margin-top:3px">P2 &mdash; Backlog</div></div>
+    </div>
+  </div>
+  <div id="solutionsList"></div>
+  <div class="dvd"></div>
+  <div class="sh"><div class="sh-bar" style="background:var(--accent)"></div><span class="sh-txt" style="color:var(--accent)">Prioritisation Matrix (RICE simplified)</span></div>
+  <div class="card"><div style="overflow-x:auto">
+    <table class="tbl">
+      <thead><tr><th>Feature</th><th>Reach</th><th>Impact</th><th>Confidence</th><th>Effort</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td>Smart Scheduling</td><td>High</td><td>Very High</td><td>90%</td><td>M</td><td style="color:var(--accent)">P0 &#11044;</td></tr>
+        <tr><td>Goal Programs</td><td>High</td><td>Very High</td><td>85%</td><td>H</td><td style="color:var(--accent)">P0 &#11044;</td></tr>
+        <tr><td>Android/Samsung Fix</td><td>High</td><td>High</td><td>95%</td><td>M</td><td style="color:var(--accent)">P0 &#11044;</td></tr>
+        <tr><td>Behavioural Notifs</td><td>High</td><td>High</td><td>80%</td><td>M</td><td style="color:var(--gold)">P1 &#11044;</td></tr>
+        <tr><td>Accountability Pods</td><td>Med</td><td>High</td><td>75%</td><td>H</td><td style="color:var(--gold)">P1 &#11044;</td></tr>
+        <tr><td>Milestone Cards</td><td>High</td><td>Med</td><td>95%</td><td>L</td><td style="color:var(--green)">P2 &#11044;</td></tr>
+        <tr><td>Premium Paywall</td><td>High</td><td>High</td><td>70%</td><td>H</td><td style="color:var(--green)">P2 &#11044;</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+
+<!-- ===== METRICS ===== -->
+<div class="pnl" id="pnl-metrics">
+  <div class="sh"><div class="sh-bar" style="background:var(--accent)"></div><span class="sh-txt" style="color:var(--accent)">Success Metrics &amp; Measurement</span></div>
+  <div class="card" style="border-left:3px solid var(--accent);margin-bottom:14px">
+    <div style="font-size:9px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">North Star Metric</div>
+    <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--text);margin-bottom:6px">Weekly Active Runners</div>
+    <div style="font-size:13px;color:var(--sub);line-height:1.7">Users who log at least 1 run per week. Directly tied to all 7 root causes. Not DAU &mdash; app-opens without running are not the goal.</div>
+  </div>
+  <div class="g2" id="metricsGrid" style="margin-bottom:20px"></div>
+  <div class="sh"><div class="sh-bar" style="background:var(--gold)"></div><span class="sh-txt" style="color:var(--gold)">Guardrail Metrics &mdash; Must Not Break</span></div>
+  <div class="card" style="border-left:3px solid var(--gold);margin-bottom:18px" id="guardrails"></div>
+  <div class="sh"><div class="sh-bar" style="background:var(--green)"></div><span class="sh-txt" style="color:var(--green)">Experiment Design</span></div>
+  <div class="card" style="border-left:3px solid var(--green)" id="experiments"></div>
+</div>
+
+<!-- ===== WIREFRAMES ===== -->
+<div class="pnl" id="pnl-wireframes">
+  <div class="sh"><div class="sh-bar" style="background:var(--accent)"></div><span class="sh-txt" style="color:var(--accent)">5 Key Screens &mdash; Wireframe Specs</span></div>
+  <div class="card c2" style="border:1px solid rgba(34,197,94,.18);margin-bottom:18px">
+    <div style="font-size:13px;color:var(--sub);line-height:1.7"><strong style="color:var(--green)">Covers all 7 root causes.</strong> Screens 1&ndash;4 address RC 01&ndash;03, 05. Screen 5 (new) addresses RC 06 (Android gap). RC 04 (notifications) is a backend service. RC 07 (paywall) is a separate Premium onboarding flow.</div>
+  </div>
+  <div id="wireframesList"></div>
+</div>
+
+</div><!-- /wrap -->
+
+<footer>Nike Run Club &middot; Retention Case Study v2 &middot; Updated with real user signals &middot; APM Interview Prep &middot; deepikajaindj90-pixel.github.io</footer>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+var FUNNEL = [
+  {label:"App Install",          pct:100, users:"100,000", note:""},
+  {label:"Onboarding Complete",  pct:72,  users:"72,000",  note:"28K lost — vague goal-setting, no program anchor"},
+  {label:"First Run Logged",     pct:48,  users:"48,000",  note:"24K lost — friction finding first guided run"},
+  {label:"Day 3 Active",         pct:31,  users:"31,000",  note:"17K lost — no next-session cue after Run 1"},
+  {label:"Day 7 Active",         pct:18,  users:"18,000",  note:"13K lost — novelty dies, no structure to return to"},
+  {label:"Day 30 Active",        pct:9,   users:"9,000",   note:"9K lost — habit never formed, no social contract"},
+  {label:"Day 90 Active",        pct:4,   users:"4,000",   note:"5K lost — no milestone rewards, no paywall lock-in"}
+];
+
+var REASONS = [
+  {
+    n:"01", color:"#FF4500",
+    title:"No Habit Loop — App Goes Silent After a Run",
+    body:"NRC logs your run and disappears. No prompt for the next session, no scheduled return, no streak with real stakes. Motivation is highest immediately post-run — NRC wastes that window completely. The app treats each run as an endpoint instead of a checkpoint.",
+    tags:["Habit Design","Re-engagement"],
+    source:"",
+    isNew:false
+  },
+  {
+    n:"02", color:"#F5C518",
+    title:"Goal Ambiguity at Onboarding",
+    bo
