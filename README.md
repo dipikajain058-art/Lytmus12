@@ -274,4 +274,151 @@ const FUNNEL=[
 ];
 const REASONS=[
   {n:"01",color:"#FF4500",title:"No Habit Loop \u2014 App Goes Silent After a Run",body:"NRC logs your run and disappears. No prompt for the next session, no scheduled return, no streak with real stakes. Motivation is highest immediately post-run \u2014 NRC wastes that window completely. The app treats each run as an endpoint instead of a checkpoint.",tags:["Habit Design","Re-engagement"],source:null,isNew:false},
-  {n:"02",color:"#F5C518",title:"Goal Ambiguity at Onboarding",body:"Users pick vague goals like \u2018Get Fit.\u2019 No structured program, no weekly plan, no milestone. Without a concrete north star, there\u2019s nothing to fail at \u2014 so nothing to stay for. Runna solved exactly this: by the time their trial ends, users are mid-program and quitting feels like giving up.",tags:["Onboarding","Goal-setting"],source:"Validated: Runna vs NRC rankings \u2014 Runna overtook NRC in UK and challenged i
+  {n:"02",color:"#F5C518",title:"Goal Ambiguity at Onboarding",body:"Users pick vague goals like \u2018Get Fit.\u2019 No structured program, no weekly plan, no milestone. Without a concrete north star, there\u2019s nothing to fail at \u2014 so nothing to stay for. Runna solved exactly this: by the time their trial ends, users are mid-program and quitting feels like giving up.",tags:["Onboarding","Goal-setting"],source:"Validated: Runna vs NRC rankings \u2014 Runna overtook NRC in UK and challenged in US, 2024\u201325",isNew:false},
+  {n:"03",color:"#A855F7",title:"Social Layer Is Passive \u2014 No Accountability",body:"The feed shows what friends ran but prompts zero obligation or competition. Users who wanted to share NRC runs had to install a third-party app (SyncApp, RunSync) just to post to Strava. Multiple sync apps existing solely for this purpose is a product failure signal, not a workaround.",tags:["Social","Accountability"],source:"Validated: SyncApp and RunSync exist solely because NRC has no native run sharing",isNew:false},
+  {n:"04",color:"#22C55E",title:"Generic Push Notifications \u2014 Irrelevant and Ignored",body:"Generic \u2018Time to run!\u2019 at arbitrary hours get ignored then disabled. Once users kill notifications, the re-engagement channel is permanently gone. NRC has no lapse-prediction, no weather-aware nudges, no time-of-day personalisation.",tags:["Notifications","Personalisation"],source:null,isNew:false},
+  {n:"05",color:"#FF6B9D",title:"Progress Feels Abstract \u2014 Wins Aren\u2019t Legible",body:"After two weeks you\u2019ve covered 18km. NRC shows a number. It doesn\u2019t say \u2018that\u2019s Bengaluru to Whitefield and back\u2019 or \u2018you\u2019re 40% to your 5K goal.\u2019 The emotional reward layer is missing. Users feel no accumulation of progress, so quitting has no perceived cost.",tags:["Motivation","UX"],source:null,isNew:false},
+  {n:"06",color:"#3B82F6",title:"Device Compatibility Gap \u2014 Silent Android Killer",body:"NRC doesn\u2019t work with Samsung Galaxy Watch. In India, Samsung dominates Android wearables. Users hit this wall on Day 1, find no fix, and switch to Strava permanently. This is a real acquisition-to-retention killer that never appears in onboarding funnel metrics \u2014 making it doubly dangerous.",tags:["Platform","Android","NEW"],source:"Validated: Samsung Community forums \u2014 users report switching to Strava specifically due to NRC incompatibility",isNew:true},
+  {n:"07",color:"#EF4444",title:"No Paywall = No Commitment Hook",body:"Fully free is a great acquisition strategy and a terrible retention strategy. There\u2019s no moment where the user decides to invest. Runna\u2019s 1-week free trial followed by a hard paywall creates psychological commitment \u2014 paid users complete programs at 3\u00d7 the rate. NRC has no equivalent lock-in moment.",tags:["Monetisation","Retention","NEW"],source:"Validated: Runna #8 globally by fitness app revenue Jan 2025. NRC, being fully free, doesn\u2019t rank",isNew:true},
+];
+const COMP_CARDS=[
+  {app:"Strava",pos:"#2",label:"Fitness app by revenue, Jan 2025",color:"#FC4C02",note:"Where NRC churners go"},
+  {app:"Runna",pos:"#8",label:"Fitness app by revenue, Jan 2025",color:"#22C55E",note:"Solved NRC\u2019s P0 gap"},
+  {app:"NRC",pos:"Free",label:"No revenue rank \u2014 fully free",color:"#8B909E",note:"Acquisition \u2260 retention"},
+];
+const COMP_INSIGHTS=[
+  {color:"#EF4444",icon:"\uD83D\uDEA7",heading:"The Walled Garden Problem \u2014 Validated by Third-Party Apps",body:"Multiple apps (SyncApp, RunSync) exist solely to export NRC data to Strava. There is no native way to share runs externally. Users built an entire workaround ecosystem just to get social features NRC doesn\u2019t offer. This is the strongest possible signal of a broken social layer \u2014 users wanted it badly enough to install a second app."},
+  {color:"#22C55E",icon:"\u2705",heading:"What Runna Got Right That NRC Didn\u2019t",body:"Runna offers a 1-week free trial then a hard paywall. By the time the trial ends, users are mid-program with goals set and progress logged. Quitting feels like giving up. In the UK, Runna held a top-20 spot for nearly a year, consistently ahead of NRC. In the US it overtook NRC after the Strava acquisition (April 2025). Structured programs + paywall = retention."},
+  {color:"#3B82F6",icon:"\uD83D\uDCF1",heading:"Samsung Watch Drop \u2014 Silent and Never Tracked",body:"NRC is incompatible with Samsung Galaxy Watch. Android/Samsung users who try to set up NRC on a Galaxy Watch hit a dead end, get no support, and switch to Strava permanently. In India, where Samsung leads Android wearables, this is a quiet Day-0 churn event. It never surfaces in onboarding funnel data \u2014 making it more dangerous than a known problem."},
+  {color:"#F5C518",icon:"\uD83D\uDCC9",heading:"The \u2018Former Faithful\u2019 Pattern",body:"A runner who wrote about NRC for the Wall Street Journal \u2014 calling it their favourite app \u2014 eventually abandoned it for Strava. The guided runs are loved. The habit infrastructure around them \u2014 loop, social, scheduling \u2014 is weak. NRC is doing the hard part (world-class audio coaching content) and failing at the easier part (retention plumbing)."},
+  {color:"#A855F7",icon:"\uD83D\uDCE3",heading:"Tom\u2019s Guide Review \u2014 Social Weakness Called Out",body:"An independent reviewer who ran with NRC for several months specifically called out \u2018fairly basic social features\u2019 as a core product con. This validates the social layer gap not from power users but from casual evaluators \u2014 exactly the audience NRC needs to retain past Day 30."},
+];
+const SOLUTIONS=[
+  {p:"P0",color:"#FF4500",title:"Smart Run Scheduling",what:"After every completed run, immediately prompt the user to book their next session. Pre-fill date + time based on goal frequency + recovery time. One tap adds to phone calendar. 30-min contextual nudge before the booked session.",why:"Motivation is highest right after a run. This is the single highest-leverage retention touch. No ML needed in V1 \u2014 a simple rule engine works. Kills the \u2018I\u2019ll run tomorrow\u2019 spiral. Directly addresses RC 01.",effort:"Medium",impact:"Very High",sprints:"2",root:["01","04"]},
+  {p:"P0",color:"#F5C518",title:"Structured Goal Programs",what:"Replace vague goal-setting with 4\u20136 structured programs: 5K in 6 Weeks, 10K Foundation, Daily Habit (3\u00d7/week), Return Runner. Each has a weekly schedule, milestones, and a shareable completion badge.",why:"Users with a concrete goal retain 3\u00d7 better. This is what Runna used to overtake NRC in UK rankings. Programs replace willpower with structure. Directly addresses RC 02 and competes on Runna\u2019s strongest ground.",effort:"High",impact:"Very High",sprints:"3",root:["02"]},
+  {p:"P0",color:"#3B82F6",title:"Samsung Watch + Android Wearable Fix",what:"Build Samsung Health integration. Add Galaxy Watch compatibility. Surface an Android device setup guide during onboarding. Never dead-end users on device setup.",why:"NRC loses Android/Samsung users on Day 1, permanently, to Strava. In India, Samsung leads Android wearables. This silent churn doesn\u2019t show in funnel metrics \u2014 which is exactly why it wasn\u2019t in v1 and exactly why it must be fixed now. RC 06.",effort:"Medium",impact:"High",sprints:"2",root:["06"]},
+  {p:"P1",color:"#22C55E",title:"Behavioural Notification Engine",what:"Replace generic pushes with context-aware triggers: lapse prediction (no run in 5 days), weather-based (\u201824\u00b0C and clear in Bengaluru right now\u2019), time-of-day match (ran at 7am historically \u2192 nudge at 6:50am).",why:"Contextual relevance is the #1 predictor of notification engagement. Rule-based V1 needs no ML. Once users disable notifications the re-engagement channel is permanently gone \u2014 this protects it.",effort:"Medium",impact:"High",sprints:"3",root:["04"]},
+  {p:"P1",color:"#A855F7",title:"Accountability Pods (3\u20135 Users)",what:"Small groups with a combined weekly km target. Pod chat unlocks only when you log a run. One-tap \u2018Cheer\u2019 per member. Pod notified (not public-shamed) if a member misses 2 sessions.",why:"Social obligation drives cadence. Small groups create commitment without toxicity. Chat-as-reward for running is a strong mechanic \u2014 the run is the price of admission to your community. Addresses RC 03.",effort:"High",impact:"High",sprints:"6",root:["03"]},
+  {p:"P2",color:"#FF6B9D",title:"Milestone Storytelling Cards",what:"After each run, show a contextual achievement card: \u201822km this month \u2014 Bengaluru to Whitefield and back \uD83D\uDDFA\uFE0F\u2019. At program completion, generate a shareable card for Instagram Stories.",why:"Emotional legibility of progress deepens the user\u2019s identity as a runner. Shareable moments also drive organic acquisition. Low effort, meaningful retention signal.",effort:"Low",impact:"Medium",sprints:"1",root:["05"]},
+  {p:"P2",color:"#EF4444",title:"NRC Premium / Paywall Experiment",what:"Introduce a 2-week free trial for Premium features (advanced program analytics, pod priority, extended guided run library). Hard paywall after. A/B test D90 retention of paid vs free users.",why:"Runna\u2019s paywall creates psychological commitment \u2014 paid users complete programs at 3\u00d7 the rate. Fully free removes every incentive to stay. This is a business model fix AND a retention fix. RC 07.",effort:"High",impact:"High",sprints:"5",root:["07"]},
+];
+const METRICS_DATA=[
+  {label:"D30 Retention",target:"9% \u2192 18%",color:"#FF4500"},
+  {label:"Sessions / Active User/Wk",target:"1.4 \u2192 2.8",color:"#F5C518"},
+  {label:"Program Enrollment",target:">40% new users",color:"#22C55E"},
+  {label:"Pod Formation Rate",target:"25% of W2 users",color:"#A855F7"},
+  {label:"Notification CTR",target:"12% \u2192 22%",color:"#3B82F6"},
+  {label:"Android D0 Churn",target:"\u221250%",color:"#EF4444"},
+  {label:"Wk-1 Sessions \u22652",target:">50% new users",color:"#F5C518"},
+  {label:"D90 Retention",target:"4% \u2192 9%",color:"#22C55E"},
+];
+const GUARDRAILS=[
+  ["Notification opt-out rate","Must stay <35%. Intrusive pushes destroy the re-engagement channel permanently."],
+  ["App Store rating","Must stay \u22654.3. Pods must be fully opt-in \u2014 mandatory social drives 1-star reviews."],
+  ["Avg session length","Must not drop below 8 min. If scheduling adds friction to core run logging, we\u2019ve over-optimised."],
+  ["Android D0 churn","Track separately from overall D1. It\u2019s a compatibility problem, not an onboarding problem."],
+];
+const EXPERIMENTS=[
+  ["A/B Test 1 \u2014 Smart Scheduling","ON vs OFF, new users. Primary: D30 retention. 6-week run, 50K users per arm."],
+  ["A/B Test 2 \u2014 Behavioural Notifications","Context-aware vs generic push. Primary: 7-day lapse rate. Secondary: CTR."],
+  ["A/B Test 3 \u2014 Premium Paywall","2-week trial + paywall vs fully-free. Primary: D90 retention. Secondary: program completion."],
+  ["Cohort Analysis \u2014 Programs","Program enrollees vs non-enrollees at D30 + D90. Control for selection bias."],
+  ["Leading Indicator","Week-1 session count is the strongest D30 predictor. Monitor weekly as early warning."],
+];
+const SCREENS=[
+  {n:"Screen 1",color:"#FF4500",title:"Post-Run: Book Next Session",isNew:false,why:"Fixes RC 01. Highest-retention moment \u2014 motivation peaks right after a run. This is the single most impactful screen in the product.",elements:["Run stats first: distance, pace, time \u2014 reward the effort before asking anything","Milestone card: \u201822km this month \u2014 Bengaluru to Whitefield and back \uD83D\uDDFA\uFE0F\u2019","BOOK YOUR NEXT RUN \u2014 immediate, prominent, can\u2019t be missed","3 time-slot options pre-filled based on goal cadence + weather data","One-tap calendar add + 30-min before nudge confirmation screen","\u2018Maybe later\u2019 soft dismiss \u2014 never hard-block, but track dismiss rate as a health signal"],fe:"Calendar write API (iOS/Android) + simple rule engine for slot suggestion. ~2 sprints."},
+  {n:"Screen 2",color:"#F5C518",title:"Onboarding: Goal Program Picker",isNew:false,why:"Fixes RC 02. Replaces vague goal-setting with structured commitment. Directly counters Runna\u2019s key retention advantage.",elements:["Program cards (not a dropdown): 5K in 6 Weeks, 10K Foundation, Daily Habit, Return Runner","Each card: icon, duration, sessions, one-line outcome promise","Selected \u2192 Week 1 calendar preview (7-day grid, run days highlighted)","3-phase program arc: \u2018What to expect\u2019 expandable section","Primary CTA: \u2018Start [Program Name]\u2019 \u2014 no skip option at this step"],fe:"New program_enrollments table. Reuses existing run scheduling infra. ~3 sprints."},
+  {n:"Screen 3",color:"#3B82F6",title:"Home Dashboard: Progress View",isNew:false,why:"Fixes RC 05. Replaces the passive activity feed with active progress state. Answers \u2018where am I?\u2019 in under 3 seconds.",elements:["Active program: name + week progress bar (Week 2 of 6, 33%)","This week: sessions done vs target (1/3) + distance logged so far","Streak counter + \u2018Next run in X days\u2019 countdown","Next booked run card: day, time, weather, session type","One contextual insight: \u2018You run best on Thursday mornings \u2014 your pace is 18% faster\u2019"],fe:"Reuses existing run data. New dashboard component. ~1 sprint MVP."},
+  {n:"Screen 4",color:"#A855F7",title:"Squad: Accountability Pod",isNew:false,why:"Fixes RC 03. Small groups, real obligation, no toxicity. Replaces passive feed with active accountability.",elements:["Pod header: name, 3\u20135 member avatars, this-week combined km vs target + progress bar","Member rows: avatar, name, streak, weekly km, \u2018ran today\u2019 green check","One-tap \u2018Cheer\u2019 button per member \u2014 gamified but zero friction","Group chat \u2014 gated: only accessible after logging a run today","No public leaderboard, no shame mechanics \u2014 privacy-first accountability"],fe:"Most complex. Group data model + chat infra. MVP ships without chat. ~4\u20136 sprints."},
+  {n:"Screen 5",color:"#22C55E",title:"Onboarding: Device Setup (NEW \u2014 Android Fix)",isNew:true,why:"Fixes RC 06 \u2014 the silent Samsung churn. Prevents Android users from hitting a dead end and switching to Strava before they ever run.",elements:["Onboarding step: \u2018Connect your watch or device\u2019 with supported device logos","Explicitly show Samsung Galaxy Watch as supported (after integration is built)","Samsung Health guided setup \u2014 3-step flow with screenshots","If unsupported device detected: \u2018We\u2019ll track from your phone \u2014 or set up later\u2019","Never dead-end the user. Always offer a path forward. Track device setup failures separately."],fe:"Samsung Health API integration. ~2 sprints. Prevents silent D0 churn that doesn\u2019t show in funnel."},
+];
+
+function pill(label,color){
+  return '<span class="pill" style="background:'+color+'22;color:'+color+';border-color:'+color+'33">'+label+'</span>';
+}
+
+function renderFunnel(){
+  var el=document.getElementById('funnel-bars');
+  el.innerHTML=FUNNEL.map(function(f,i){
+    var color=f.pct>=70?'var(--green)':f.pct>=30?'var(--gold)':'var(--accent)';
+    return '<div style="margin-bottom:'+(i<FUNNEL.length-1?'20':'0')+'px"><div class="flex jc-sb" style="margin-bottom:5px"><span class="fs13 fw6" style="color:var(--text)">'+f.label+'</span><span class="fs13 fw7" style="color:'+color+'">'+f.pct+'% &middot; '+f.users+'</span></div><div class="ftrack"><div class="ffill" style="width:'+f.pct+'%;background:'+color+'"></div></div>'+(f.note?'<div class="fnote">&darr; '+f.note+'</div>':'')+'</div>';
+  }).join('');
+}
+
+function renderReasons(){
+  var el=document.getElementById('reasons-list');
+  el.innerHTML=REASONS.map(function(r,i){
+    return '<div class="card acc al mb10" style="border-left-color:'+r.color+'" data-ns="r" onclick="toggleAcc(this)"><div class="acc-hdr"><div class="flex items-c gap12 flex-wrap"><span class="f-syne fs22 fw8" style="color:'+r.color+';opacity:.45;line-height:1;flex-shrink:0">'+r.n+'</span><div class="flex items-c gap8 flex-wrap"><span class="fs14 fw7" style="color:var(--text)">'+r.title+'</span>'+(r.isNew?'<span class="fs9 fw8 uc" style="background:rgba(59,130,246,.15);color:#3B82F6;border:1px solid rgba(59,130,246,.27);padding:1px 7px;border-radius:10px;letter-spacing:.08em">New</span>':'')+'</div></div><span class="acc-tog">+</span></div><div class="acc-body"><div class="fs13 lh175 mb12" style="color:var(--sub)">'+r.body+'</div>'+(r.source?'<div style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.16);border-radius:8px;padding:8px 12px;font-size:11px;color:#3B82F6;margin-bottom:10px">&#128204; '+r.source+'</div>':'')+'<div>'+r.tags.map(function(t){return pill(t,r.color)}).join('')+'</div></div></div>';
+  }).join('');
+}
+
+function renderCompetitive(){
+  document.getElementById('comp-cards').innerHTML=COMP_CARDS.map(function(c){
+    return '<div class="card tc" style="padding:16px 12px"><div class="f-syne fw8" style="font-size:24px;color:'+c.color+'">'+c.pos+'</div><div class="fs13 fw7" style="color:var(--text);margin:4px 0 2px">'+c.app+'</div><div class="fs10" style="color:var(--sub);margin-bottom:6px">'+c.label+'</div><div class="fs11 italic" style="color:'+c.color+'">'+c.note+'</div></div>';
+  }).join('');
+  document.getElementById('comp-insights').innerHTML=COMP_INSIGHTS.map(function(item){
+    return '<div class="card al mb12" style="border-left-color:'+item.color+'"><div class="flex gap12"><span style="font-size:22px;flex-shrink:0">'+item.icon+'</span><div><div class="fs14 fw7 mb8" style="color:var(--text)">'+item.heading+'</div><div class="fs13 lh175" style="color:var(--sub)">'+item.body+'</div></div></div></div>';
+  }).join('');
+}
+
+function renderSolutions(){
+  document.getElementById('solutions-list').innerHTML=SOLUTIONS.map(function(s,i){
+    return '<div class="card acc al mb10" style="border-left-color:'+s.color+'" data-ns="s" onclick="toggleAcc(this)"><div class="acc-hdr"><div class="flex gap10 items-c flex-wrap"><span style="background:'+s.color+';color:#000;font-weight:800;font-size:10px;padding:3px 8px;border-radius:5px;letter-spacing:.07em">'+s.p+'</span><span class="fs14 fw7" style="color:var(--text)">'+s.title+'</span><span class="fs11" style="color:var(--sub)">&middot; Fixes RC '+s.root.join(', ')+'</span></div><span class="acc-tog">+</span></div><div class="acc-body"><div class="fs11 fw7 uc mb6" style="color:var(--sub);letter-spacing:.08em">What to Build</div><div class="fs13 lh175 mb14" style="color:var(--sub)">'+s.what+'</div><div style="background:'+s.color+'1A;border:1px solid '+s.color+'28;border-radius:8px;padding:10px 14px;margin-bottom:12px"><div class="fs10 fw7 uc mb4" style="color:'+s.color+';letter-spacing:.08em">Why This Works</div><div class="fs13 lh17" style="color:var(--sub)">'+s.why+'</div></div><div>'+pill('Effort: '+s.effort,'#8B909E')+pill('Impact: '+s.impact,s.color)+pill('~'+s.sprints+' sprints','#8B909E')+'</div></div></div>';
+  }).join('');
+}
+
+function renderMetrics(){
+  document.getElementById('metrics-grid').innerHTML=METRICS_DATA.map(function(m){
+    return '<div class="card"><div class="fs10 fw7 uc mb4" style="color:var(--sub);letter-spacing:.07em">'+m.label+'</div><div class="f-syne fw8" style="font-size:18px;color:'+m.color+'">'+m.target+'</div></div>';
+  }).join('');
+  document.getElementById('guardrails').innerHTML=GUARDRAILS.map(function(row,i){
+    return '<div class="flex gap10" style="padding:10px 0;'+(i<GUARDRAILS.length-1?'border-bottom:1px solid var(--border)':'')+'"><span style="color:var(--gold);flex-shrink:0">&warning;</span><div><div class="fs13 fw7" style="color:var(--text)">'+row[0]+'</div><div class="fs12 mt4" style="color:var(--sub)">'+row[1]+'</div></div></div>';
+  }).join('');
+  document.getElementById('experiments').innerHTML=EXPERIMENTS.map(function(row,i){
+    return '<div style="padding:10px 0;'+(i<EXPERIMENTS.length-1?'border-bottom:1px solid var(--border)':'')+'"><div class="fs13 fw7" style="color:var(--text)">'+row[0]+'</div><div class="fs12 mt4" style="color:var(--sub)">'+row[1]+'</div></div>';
+  }).join('');
+}
+
+function renderWireframes(){
+  document.getElementById('wireframes-list').innerHTML=SCREENS.map(function(s,i){
+    return '<div style="margin-bottom:10px"><div class="card acc al" style="border-left-color:'+s.color+'" data-ns="w" onclick="toggleAcc(this)"><div class="acc-hdr"><div class="flex gap10 items-c flex-wrap"><span class="fs10 fw8 uc ls08" style="color:'+s.color+'">'+s.n+'</span><span class="fs14 fw7" style="color:var(--text)">'+s.title+'</span>'+(s.isNew?'<span class="pill" style="background:rgba(59,130,246,.13);color:#3B82F6;border-color:rgba(59,130,246,.2)">New</span>':'')+'</div><span class="acc-tog">+</span></div><div class="acc-body"><div style="background:'+s.color+'1A;border:1px solid '+s.color+'28;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:var(--sub);line-height:1.7"><strong style="color:'+s.color+'">Why this screen:</strong> '+s.why+'</div><div class="fs10 fw7 uc mb10" style="color:var(--sub);letter-spacing:.08em">Key Elements</div>'+s.elements.map(function(el,j){return '<div class="flex gap10" style="padding:8px 0;'+(j<s.elements.length-1?'border-bottom:1px solid var(--border)':'')+'"><span style="color:'+s.color+';flex-shrink:0;font-size:12px;margin-top:2px">&#9658;</span><div class="fs13" style="color:var(--sub);line-height:1.6">'+el+'</div></div>';}).join('')+'<div style="margin-top:14px;background:var(--surface);border-radius:8px;padding:10px 14px;display:flex;gap:8px"><span style="font-size:14px;flex-shrink:0">&#9881;&#65039;</span><div class="fs12" style="color:var(--sub)"><strong style="color:var(--text)">Engineering feasibility:</strong> '+s.fe+'</div></div></div></div></div>';
+  }).join('');
+}
+
+function toggleAcc(el){
+  var ns=el.dataset.ns;
+  var isOpen=el.classList.contains('open');
+  document.querySelectorAll('.acc[data-ns="'+ns+'"]').forEach(function(a){
+    a.classList.remove('open');
+    a.querySelector('.acc-tog').textContent='+';
+  });
+  if(!isOpen){
+    el.classList.add('open');
+    el.querySelector('.acc-tog').textContent='\u2212';
+  }
+}
+
+document.getElementById('tabs').addEventListener('click',function(e){
+  var btn=e.target.closest('.tbtn');
+  if(!btn)return;
+  document.querySelectorAll('.tbtn').forEach(function(b){b.classList.remove('active')});
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
+  btn.classList.add('active');
+  var panel=document.getElementById('panel-'+btn.dataset.tab);
+  if(panel){
+    panel.classList.add('active');
+    panel.classList.remove('fu');
+    void panel.offsetWidth;
+    panel.classList.add('fu');
+  }
+});
+
+renderFunnel();
+renderReasons();
+renderCompetitive();
+renderSolutions();
+renderMetrics();
+renderWireframes();
+</script>
+</body>
+</html>
